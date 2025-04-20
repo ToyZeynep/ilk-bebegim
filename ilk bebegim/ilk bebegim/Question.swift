@@ -12,4 +12,5 @@ struct Question: Identifiable, Codable {
     @DocumentID var id: String?
     var questionText: String
     var answers: [String]
+    var isFavorite: Bool? = false
 }

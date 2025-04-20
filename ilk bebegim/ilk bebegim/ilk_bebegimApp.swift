@@ -10,13 +10,19 @@ import Firebase
 
 @main
 struct IlkBebegimApp: App {
+    @AppStorage("hasSeenOnboarding") var hasSeenOnboarding: Bool = false
+
     init() {
         FirebaseApp.configure()
     }
 
     var body: some Scene {
         WindowGroup {
-            QuestionListView()
+            if hasSeenOnboarding {
+                QuestionListView()
+            } else {
+                OnboardingView()
+            }
         }
     }
 }
