@@ -6,12 +6,23 @@
 //
 
 import SwiftUI
+import Firebase
 
 @main
-struct ilk_bebegimApp: App {
+struct IlkBebegimApp: App {
+    @AppStorage("hasSeenOnboarding") var hasSeenOnboarding: Bool = false
+
+    init() {
+        FirebaseApp.configure()
+    }
+
     var body: some Scene {
         WindowGroup {
-            ContentView()
+            if hasSeenOnboarding {
+                QuestionListView()
+            } else {
+                OnboardingView()
+            }
         }
     }
 }
