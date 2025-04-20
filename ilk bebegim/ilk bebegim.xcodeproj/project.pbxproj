@@ -6,6 +6,14 @@
 	objectVersion = 77;
 	objects = {
 
+/* Begin PBXBuildFile section */
+		21D527712DB5750D00C55522 /* FirebaseAnalytics in Frameworks */ = {isa = PBXBuildFile; productRef = 21D527702DB5750D00C55522 /* FirebaseAnalytics */; };
+		21D527732DB5750D00C55522 /* FirebaseAuth in Frameworks */ = {isa = PBXBuildFile; productRef = 21D527722DB5750D00C55522 /* FirebaseAuth */; };
+		21D527752DB5750D00C55522 /* FirebaseCore in Frameworks */ = {isa = PBXBuildFile; productRef = 21D527742DB5750D00C55522 /* FirebaseCore */; };
+		21D527772DB5750D00C55522 /* FirebaseCrashlytics in Frameworks */ = {isa = PBXBuildFile; productRef = 21D527762DB5750D00C55522 /* FirebaseCrashlytics */; };
+		21D527792DB5750D00C55522 /* FirebaseFirestore in Frameworks */ = {isa = PBXBuildFile; productRef = 21D527782DB5750D00C55522 /* FirebaseFirestore */; };
+/* End PBXBuildFile section */
+
 /* Begin PBXFileReference section */
 		21D527582DB56C0000C55522 /* ilk bebegim.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "ilk bebegim.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -23,6 +31,11 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				21D527712DB5750D00C55522 /* FirebaseAnalytics in Frameworks */,
+				21D527772DB5750D00C55522 /* FirebaseCrashlytics in Frameworks */,
+				21D527752DB5750D00C55522 /* FirebaseCore in Frameworks */,
+				21D527792DB5750D00C55522 /* FirebaseFirestore in Frameworks */,
+				21D527732DB5750D00C55522 /* FirebaseAuth in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -65,6 +78,11 @@
 			);
 			name = "ilk bebegim";
 			packageProductDependencies = (
+				21D527702DB5750D00C55522 /* FirebaseAnalytics */,
+				21D527722DB5750D00C55522 /* FirebaseAuth */,
+				21D527742DB5750D00C55522 /* FirebaseCore */,
+				21D527762DB5750D00C55522 /* FirebaseCrashlytics */,
+				21D527782DB5750D00C55522 /* FirebaseFirestore */,
 			);
 			productName = "ilk bebegim";
 			productReference = 21D527582DB56C0000C55522 /* ilk bebegim.app */;
@@ -94,6 +112,9 @@
 			);
 			mainGroup = 21D5274F2DB56C0000C55522;
 			minimizedProjectReferenceProxies = 1;
+			packageReferences = (
+				21D5276F2DB5750D00C55522 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */,
+			);
 			preferredProjectObjectVersion = 77;
 			productRefGroup = 21D527592DB56C0000C55522 /* Products */;
 			projectDirPath = "";
@@ -264,7 +285,7 @@
 				"LD_RUNPATH_SEARCH_PATHS[sdk=macosx*]" = "@executable_path/../Frameworks";
 				MACOSX_DEPLOYMENT_TARGET = 15.3;
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = "com.ilk.bebegim.ilk-bebegim";
+				PRODUCT_BUNDLE_IDENTIFIER = com.ilk.bebegim;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				REGISTER_APP_GROUPS = YES;
 				SDKROOT = auto;
@@ -301,7 +322,7 @@
 				"LD_RUNPATH_SEARCH_PATHS[sdk=macosx*]" = "@executable_path/../Frameworks";
 				MACOSX_DEPLOYMENT_TARGET = 15.3;
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = "com.ilk.bebegim.ilk-bebegim";
+				PRODUCT_BUNDLE_IDENTIFIER = com.ilk.bebegim;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				REGISTER_APP_GROUPS = YES;
 				SDKROOT = auto;
@@ -335,6 +356,45 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		21D5276F2DB5750D00C55522 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/firebase/firebase-ios-sdk";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 11.11.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		21D527702DB5750D00C55522 /* FirebaseAnalytics */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 21D5276F2DB5750D00C55522 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseAnalytics;
+		};
+		21D527722DB5750D00C55522 /* FirebaseAuth */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 21D5276F2DB5750D00C55522 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseAuth;
+		};
+		21D527742DB5750D00C55522 /* FirebaseCore */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 21D5276F2DB5750D00C55522 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseCore;
+		};
+		21D527762DB5750D00C55522 /* FirebaseCrashlytics */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 21D5276F2DB5750D00C55522 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseCrashlytics;
+		};
+		21D527782DB5750D00C55522 /* FirebaseFirestore */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 21D5276F2DB5750D00C55522 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseFirestore;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 21D527502DB56C0000C55522 /* Project object */;
 }

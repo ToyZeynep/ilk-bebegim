@@ -6,12 +6,17 @@
 //
 
 import SwiftUI
+import Firebase
 
 @main
-struct ilk_bebegimApp: App {
+struct IlkBebegimApp: App {
+    init() {
+        FirebaseApp.configure()
+    }
+
     var body: some Scene {
         WindowGroup {
-            ContentView()
+            QuestionListView()
         }
     }
 }
