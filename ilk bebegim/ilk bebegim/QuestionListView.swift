@@ -9,40 +9,43 @@
 import SwiftUI
 
 struct QuestionListView: View {
+    @StateObject private var viewModel = QuestionViewModel()
     @State private var searchText: String = ""
-    @State private var isLoading: Bool = false
-    
-    // Use mock data for now
-    var questions: [Question] = sampleQuestions
-    
+
     var filteredQuestions: [Question] {
         if searchText.isEmpty {
-            return questions
+            return viewModel.questions
         } else {
-            return questions.filter {
+            return viewModel.questions.filter {
                 $0.questionText.localizedCaseInsensitiveContains(searchText)
             }
         }
     }
-    
+
     var body: some View {
         NavigationView {
             VStack {
-                // Search Bar
                 TextField("Search questions...", text: $searchText)
                     .padding(10)
                     .background(Color(.systemGray6))
                     .cornerRadius(8)
                     .padding(.horizontal)
                     .padding(.top)
-                
-                // Loading Indicator
-                if isLoading {
+
+                if viewModel.isLoading {
                     Spacer()
                     ProgressView("Loading questions...")
                     Spacer()
                 }
-                // Empty State
+
+                else if let error = viewModel.errorMessage {
+                    Spacer()
+                    Text(error)
+                        .foregroundColor(.red)
+                        .padding()
+                    Spacer()
+                }
+
                 else if filteredQuestions.isEmpty {
                     Spacer()
                     VStack {
@@ -55,7 +58,7 @@ struct QuestionListView: View {
                     }
                     Spacer()
                 }
-                // List View
+
                 else {
                     List(filteredQuestions) { question in
                         NavigationLink(destination: QuestionDetailView(question: question)) {
@@ -74,15 +77,3 @@ struct QuestionListView: View {
         }
     }
 }
-
-let sampleQuestions = [
-    Question(questionText: "Why do babies cry?", answers: [
-        "They might be hungry",
-        "Their diaper is dirty",
-        "They want to be held"
-    ]),
-    Question(questionText: "When do babies start crawling?", answers: [
-        "Usually between 6 to 10 months",
-        "It varies from baby to baby"
-    ])
-]
