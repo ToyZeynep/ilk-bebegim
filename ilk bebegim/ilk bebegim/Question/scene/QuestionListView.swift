@@ -9,7 +9,7 @@
 import SwiftUI
 
 struct QuestionListView: View {
-    @StateObject private var viewModel = QuestionViewModel()
+    @ObservedObject var viewModel: QuestionViewModel
     @State private var searchText: String = ""
     
     var filteredQuestions: [Question] {
@@ -31,20 +31,6 @@ struct QuestionListView: View {
                         .fontWeight(.bold)
                         .foregroundColor(.accentColor)
                         .padding(.top, 16)
-                    
-                    Spacer()
-                    
-                    NavigationLink(
-                        destination: FavoritesView(viewModel: viewModel)
-                    ) {
-                        Image(systemName: "heart.fill")
-                            .foregroundColor(.red)
-                    }
-                    
-                    NavigationLink(destination: DailyTipView()) {
-                        Image(systemName: "lightbulb")
-                            .foregroundColor(.orange)
-                    }
                 }
                 .padding()
                 
