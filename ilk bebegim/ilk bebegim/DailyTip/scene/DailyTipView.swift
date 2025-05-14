@@ -12,12 +12,18 @@ struct DailyTipView: View {
     @StateObject private var viewModel = DailyTipViewModel()
 
     var body: some View {
-        VStack(alignment: .leading, spacing: 16) {
-            if let tip = viewModel.todaysTip {
+        VStack(spacing: 0) {
+            HStack {
                 Text("Today's Tip")
-                    .font(.title)
-                    .bold()
+                    .font(.largeTitle)
+                    .fontWeight(.bold)
+                    .foregroundColor(.accentColor)
+                    .padding(.top, 16)
+            }
+            .padding()
 
+            if let tip = viewModel.todaysTip {
+                
                 Text(tip.title)
                     .font(.headline)
                     .foregroundColor(.blue)

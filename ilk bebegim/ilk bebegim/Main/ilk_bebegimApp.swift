@@ -19,7 +19,7 @@ struct IlkBebegimApp: App {
     var body: some Scene {
         WindowGroup {
             if hasSeenOnboarding {
-                QuestionListView()
+                MainTabView()
             } else {
                 OnboardingView()
             }
