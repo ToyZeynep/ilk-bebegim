@@ -30,6 +30,12 @@ struct MainTabView: View {
                     Image(systemName: "lightbulb")
                     Text("Daily Tip")
                 }
+            LullabyListView()
+                .tabItem {
+                    Image(systemName: "music.note")
+                    Text("Lullabies")
+                }
+
         }
     }
 }
