@@ -21,8 +21,8 @@ class NotificationManager {
 
     func scheduleDailyReminder(hour: Int = 10, minute: Int = 0) {
         let content = UNMutableNotificationContent()
-        content.title = "🍼 Baby Tip of the Day"
-        content.body = "Check out today's tip to support your baby's growth!"
+        content.title = "🍼Günün İpucu"
+        content.body = "Bebeğinizin gelişimini desteklemek için bugünün ipuçlarına göz atın!"
         content.sound = .default
 
         var dateComponents = DateComponents()

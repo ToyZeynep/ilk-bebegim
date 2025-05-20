@@ -16,26 +16,25 @@ struct MainTabView: View {
             QuestionListView(viewModel: viewModel)
                 .tabItem {
                     Image(systemName: "questionmark.circle")
-                    Text("Questions")
+                    Text("Sorular")
                 }
 
             FavoritesView(viewModel: viewModel)
                 .tabItem {
                     Image(systemName: "heart.fill")
-                    Text("Favorites")
+                    Text("Favoriler")
                 }
 
             DailyTipView()
                 .tabItem {
                     Image(systemName: "lightbulb")
-                    Text("Daily Tip")
+                    Text("Günlük İpucu")
                 }
-            LullabyListView()
-                .tabItem {
-                    Image(systemName: "music.note")
-                    Text("Lullabies")
-                }
-
+//            LullabyListView()
+//                .tabItem {
+//                    Image(systemName: "music.note")
+//                    Text("Lullabies")
+//                }
         }
     }
 }

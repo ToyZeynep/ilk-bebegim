@@ -18,7 +18,7 @@ struct FavoritesView: View {
     var body: some View {
             VStack(spacing: 0) {
                 HStack {
-                    Text("Favorites")
+                    Text("Favoriler")
                         .font(.largeTitle)
                         .fontWeight(.bold)
                         .foregroundColor(.accentColor)
@@ -34,7 +34,7 @@ struct FavoritesView: View {
                         .scaledToFit()
                         .frame(width: 80, height: 80)
                         .foregroundColor(.gray.opacity(0.3))
-                    Text("No favorites yet.")
+                    Text("Henüz favori yok.")
                         .font(.body)
                         .foregroundColor(.gray)
                 }

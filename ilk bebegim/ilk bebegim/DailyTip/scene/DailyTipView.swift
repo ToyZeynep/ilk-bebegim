@@ -14,7 +14,7 @@ struct DailyTipView: View {
     var body: some View {
         VStack(spacing: 0) {
             HStack {
-                Text("Today's Tip")
+                Text("Bugünün İpucu")
                     .font(.largeTitle)
                     .fontWeight(.bold)
                     .foregroundColor(.accentColor)
@@ -31,14 +31,14 @@ struct DailyTipView: View {
                 Text(tip.message)
                     .font(.body)
             } else {
-                Text("No tip for today yet.")
+                Text("Bugün için henüz bir ipucu yok.")
                     .foregroundColor(.gray)
             }
 
             Spacer()
         }
         .padding()
-        .navigationTitle("Daily Tip 💡")
+        .navigationTitle("Günlük İpucu 💡")
         .onAppear {
             viewModel.fetchTipForToday()
         }

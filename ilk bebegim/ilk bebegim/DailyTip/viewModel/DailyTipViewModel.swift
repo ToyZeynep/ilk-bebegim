@@ -32,7 +32,7 @@ class DailyTipViewModel: ObservableObject {
                         self.todaysTip = tip
                     }
                 } else {
-                    print("No tip found for today.")
+                    print("Bugün için ipucu bulunamadı.")
                 }
             }
     }

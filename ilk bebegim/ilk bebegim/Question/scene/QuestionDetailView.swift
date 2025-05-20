@@ -14,7 +14,7 @@ struct QuestionDetailView: View {
     var body: some View {
         ScrollView {
             VStack(alignment: .leading, spacing: 12) {
-                Text("Answers")
+                Text("Cevaplar")
                     .font(.title2)
                     .bold()
 
@@ -27,6 +27,6 @@ struct QuestionDetailView: View {
             }
             .padding()
         }
-        .navigationTitle("Question")
+        .navigationTitle("Soru Detayları")
     }
 }
