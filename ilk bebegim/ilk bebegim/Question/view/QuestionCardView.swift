@@ -14,11 +14,9 @@ struct QuestionCardView: View {
 
     var body: some View {
         VStack(alignment: .leading, spacing: 10) {
-            NavigationLink(destination: QuestionDetailView(question: question)) {
-                Text(question.questionText)
-                    .font(.headline)
-                    .foregroundColor(.primary)
-            }
+            Text(question.questionText)
+                .font(.headline)
+                .foregroundColor(.primary)
 
             HStack {
                 Spacer()

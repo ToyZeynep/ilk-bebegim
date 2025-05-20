@@ -16,6 +16,7 @@ struct FavoritesView: View {
     }
 
     var body: some View {
+        NavigationView {
             VStack(spacing: 0) {
                 HStack {
                     Text("Favoriler")
@@ -26,29 +27,33 @@ struct FavoritesView: View {
                 }
                 .padding()
 
-            if favoriteQuestions.isEmpty {
-                Spacer()
-                VStack(spacing: 12) {
-                    Image(systemName: "heart.slash")
-                        .resizable()
-                        .scaledToFit()
-                        .frame(width: 80, height: 80)
-                        .foregroundColor(.gray.opacity(0.3))
-                    Text("Henüz favori yok.")
-                        .font(.body)
-                        .foregroundColor(.gray)
-                }
-                .frame(maxWidth: .infinity)
-                Spacer()
-            } else {
-                ScrollView {
-                    LazyVStack(spacing: 16) {
-                        ForEach(favoriteQuestions) { question in
-                            QuestionCardView(question: question, viewModel: viewModel)
-                        }
+                if favoriteQuestions.isEmpty {
+                    Spacer()
+                    VStack(spacing: 12) {
+                        Image(systemName: "heart.slash")
+                            .resizable()
+                            .scaledToFit()
+                            .frame(width: 80, height: 80)
+                            .foregroundColor(.gray.opacity(0.3))
+                        Text("Henüz favori yok.")
+                            .font(.body)
+                            .foregroundColor(.gray)
                     }
-                    .padding(.horizontal)
-                    .padding(.top, 8)
+                    .frame(maxWidth: .infinity)
+                    Spacer()
+                } else {
+                    ScrollView {
+                        LazyVStack(spacing: 16) {
+                            ForEach(favoriteQuestions) { question in
+                                NavigationLink(destination: QuestionDetailView(question: question)) {
+                                    QuestionCardView(question: question, viewModel: viewModel)
+                                }
+                                .buttonStyle(PlainButtonStyle())
+                            }
+                        }
+                        .padding(.horizontal)
+                        .padding(.top, 8)
+                    }
                 }
             }
         }
