@@ -59,7 +59,7 @@ struct DailyTipView: View {
                                     )
                                     .multilineTextAlignment(.center)
                                 
-                                Text(tip.message)
+                                Text(tip.content)
                                     .font(.system(size: 18, weight: .medium, design: .rounded))
                                     .foregroundColor(Color(red: 0.3, green: 0.3, blue: 0.4))
                                     .multilineTextAlignment(.center)
@@ -108,7 +108,7 @@ struct DailyTipView: View {
             }
         }
         .onAppear {
-            viewModel.fetchTipForToday()
+            viewModel.fetchDailyTip()
         }
     }
 }

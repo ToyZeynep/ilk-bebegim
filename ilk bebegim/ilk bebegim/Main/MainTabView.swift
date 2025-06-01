@@ -45,7 +45,7 @@ struct MainTabView: View {
                     Text("Büyüme")
                 }
         }
-        .accentColor(Color(red: 0.89, green: 0.47, blue: 0.76)) 
+        .accentColor(Color(red: 0.89, green: 0.47, blue: 0.76))
         .onAppear {
             let appearance = UITabBarAppearance()
             appearance.configureWithOpaqueBackground()
