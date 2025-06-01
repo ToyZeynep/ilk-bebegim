@@ -5,7 +5,6 @@
 //  Created by Zeynep Toy on 20.04.2025.
 //
 
-
 import SwiftUI
 
 struct FavoritesView: View {
@@ -17,42 +16,79 @@ struct FavoritesView: View {
 
     var body: some View {
         NavigationView {
-            VStack(spacing: 0) {
-                HStack {
-                    Text("Favoriler")
-                        .font(.largeTitle)
-                        .fontWeight(.bold)
-                        .foregroundColor(.accentColor)
-                        .padding(.top, 16)
-                }
-                .padding()
-
-                if favoriteQuestions.isEmpty {
-                    Spacer()
-                    VStack(spacing: 12) {
-                        Image(systemName: "heart.slash")
-                            .resizable()
-                            .scaledToFit()
-                            .frame(width: 80, height: 80)
-                            .foregroundColor(.gray.opacity(0.3))
-                        Text("Henüz favori yok.")
-                            .font(.body)
-                            .foregroundColor(.gray)
-                    }
-                    .frame(maxWidth: .infinity)
-                    Spacer()
-                } else {
-                    ScrollView {
-                        LazyVStack(spacing: 16) {
-                            ForEach(favoriteQuestions) { question in
-                                NavigationLink(destination: QuestionDetailView(question: question)) {
-                                    QuestionCardView(question: question, viewModel: viewModel)
-                                }
-                                .buttonStyle(PlainButtonStyle())
+            ZStack {
+                // Background gradient
+                LinearGradient(
+                    colors: [
+                        Color(red: 0.98, green: 0.94, blue: 0.96),
+                        Color(red: 0.95, green: 0.97, blue: 0.99)
+                    ],
+                    startPoint: .topLeading,
+                    endPoint: .bottomTrailing
+                )
+                .ignoresSafeArea()
+                
+                VStack(spacing: 0) {
+                    if favoriteQuestions.isEmpty {
+                        Spacer()
+                        VStack(spacing: 24) {
+                            Image(systemName: "heart.slash.fill")
+                                .font(.system(size: 72))
+                                .foregroundColor(.gray.opacity(0.3))
+                            
+                            VStack(spacing: 8) {
+                                Text("Henüz favori yok")
+                                    .font(.system(size: 20, weight: .semibold, design: .rounded))
+                                    .foregroundColor(.primary)
+                                
+                                Text("Beğendiğin soruları favorilere ekleyerek\nburadan kolayca erişebilirsin")
+                                    .font(.system(size: 16, weight: .medium, design: .rounded))
+                                    .foregroundColor(.secondary)
+                                    .multilineTextAlignment(.center)
+                                    .lineSpacing(4)
                             }
                         }
-                        .padding(.horizontal)
-                        .padding(.top, 8)
+                        .frame(maxWidth: .infinity)
+                        .padding(.horizontal, 32)
+                        Spacer()
+                    } else {
+                        // Favori sayısı badge'i üstte
+                        HStack {
+                            Spacer()
+                            Text("\(favoriteQuestions.count) favori")
+                                .font(.system(size: 16, weight: .semibold, design: .rounded))
+                                .foregroundColor(.white)
+                                .padding(.horizontal, 16)
+                                .padding(.vertical, 8)
+                                .background(
+                                    Capsule()
+                                        .fill(
+                                            LinearGradient(
+                                                colors: [
+                                                    Color(red: 0.89, green: 0.47, blue: 0.76),
+                                                    Color(red: 0.67, green: 0.32, blue: 0.89)
+                                                ],
+                                                startPoint: .leading,
+                                                endPoint: .trailing
+                                            )
+                                        )
+                                )
+                        }
+                        .padding(.horizontal, 20)
+                        .padding(.top, 16)
+                        
+                        ScrollView(showsIndicators: false) {
+                            LazyVStack(spacing: 16) {
+                                ForEach(favoriteQuestions) { question in
+                                    NavigationLink(destination: QuestionDetailView(question: question)) {
+                                        QuestionCardView(question: question, viewModel: viewModel)
+                                    }
+                                    .buttonStyle(PlainButtonStyle())
+                                }
+                            }
+                            .padding(.horizontal, 20)
+                            .padding(.vertical, 16)
+                        }
                     }
                 }
             }

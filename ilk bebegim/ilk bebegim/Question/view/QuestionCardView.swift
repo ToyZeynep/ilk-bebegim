@@ -1,40 +1,54 @@
-//
-//  QuestionCardView.swift
-//  ilk bebegim
-//
-//  Created by Zeynep Toy on 20.04.2025.
-//
-
+// QuestionCardView.swift
 
 import SwiftUI
 
 struct QuestionCardView: View {
     let question: Question
     @ObservedObject var viewModel: QuestionViewModel
-
+    
     var body: some View {
-        VStack(alignment: .leading, spacing: 10) {
-            Text(question.questionText)
-                .font(.headline)
-                .foregroundColor(.primary)
-
-            HStack {
-                Spacer()
-
-                Button(action: {
-                    withAnimation(.spring(response: 0.3, dampingFraction: 0.6)) {
-                        viewModel.toggleFavorite(for: question)
-                    }
-                }) {
-                    Image(systemName: question.isFavorite == true ? "heart.fill" : "heart")
-                        .foregroundColor(.red)
-                        .font(.title2)
-                }
+        HStack(alignment: .top, spacing: 16) {
+            // Question content
+            VStack(alignment: .leading, spacing: 8) {
+                Text(question.questionText)
+                    .font(.system(size: 16, weight: .semibold, design: .rounded))
+                    .foregroundColor(Color(red: 0.3, green: 0.3, blue: 0.4))
+                    .multilineTextAlignment(.leading)
+                    .lineLimit(3)
             }
+            
+            Spacer()
+            
+            // Favorite button
+            Button(action: {
+                viewModel.toggleFavorite(for: question)
+            }) {
+                Image(systemName: question.isFavorite ?? false ? "heart.fill" : "heart")
+                    .font(.system(size: 20, weight: .medium))
+                    .foregroundColor(question.isFavorite ?? false ? .red : .gray)
+                    .animation(.spring(response: 0.3, dampingFraction: 0.6), value: question.isFavorite)
+            }
+            .buttonStyle(PlainButtonStyle())
         }
-        .padding()
-        .background(Color(.systemGray6))
-        .cornerRadius(12)
-        .shadow(color: Color.black.opacity(0.05), radius: 4, x: 0, y: 2)
+        .padding(20)
+        .background(
+            RoundedRectangle(cornerRadius: 16)
+                .fill(Color.white)
+                .shadow(color: .black.opacity(0.05), radius: 12, y: 4)
+        )
+        .overlay(
+            RoundedRectangle(cornerRadius: 16)
+                .stroke(
+                    LinearGradient(
+                        colors: [
+                            Color(red: 0.89, green: 0.47, blue: 0.76).opacity(0.1),
+                            Color(red: 0.67, green: 0.32, blue: 0.89).opacity(0.1)
+                        ],
+                        startPoint: .leading,
+                        endPoint: .trailing
+                    ),
+                    lineWidth: 1
+                )
+        )
     }
 }
