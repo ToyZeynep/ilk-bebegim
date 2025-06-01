@@ -39,11 +39,11 @@ struct FavoritesView: View {
                             VStack(spacing: 8) {
                                 Text("Henüz favori yok")
                                     .font(.system(size: 20, weight: .semibold, design: .rounded))
-                                    .foregroundColor(.primary)
+                                    .foregroundColor(.black)
                                 
-                                Text("Beğendiğin soruları favorilere ekleyerek\nburadan kolayca erişebilirsin")
+                                Text("İstediğin soruları favorilere ekleyerek\nburadan kolayca erişebilirsin")
                                     .font(.system(size: 16, weight: .medium, design: .rounded))
-                                    .foregroundColor(.secondary)
+                                    .foregroundColor(.gray)
                                     .multilineTextAlignment(.center)
                                     .lineSpacing(4)
                             }
@@ -52,31 +52,6 @@ struct FavoritesView: View {
                         .padding(.horizontal, 32)
                         Spacer()
                     } else {
-                        // Favori sayısı badge'i üstte
-                        HStack {
-                            Spacer()
-                            Text("\(favoriteQuestions.count) favori")
-                                .font(.system(size: 16, weight: .semibold, design: .rounded))
-                                .foregroundColor(.white)
-                                .padding(.horizontal, 16)
-                                .padding(.vertical, 8)
-                                .background(
-                                    Capsule()
-                                        .fill(
-                                            LinearGradient(
-                                                colors: [
-                                                    Color(red: 0.89, green: 0.47, blue: 0.76),
-                                                    Color(red: 0.67, green: 0.32, blue: 0.89)
-                                                ],
-                                                startPoint: .leading,
-                                                endPoint: .trailing
-                                            )
-                                        )
-                                )
-                        }
-                        .padding(.horizontal, 20)
-                        .padding(.top, 16)
-                        
                         ScrollView(showsIndicators: false) {
                             LazyVStack(spacing: 16) {
                                 ForEach(favoriteQuestions) { question in

@@ -90,16 +90,15 @@ struct DailyTipView: View {
                         .padding(.horizontal, 24)
                         
                     } else {
-                        // Empty state
+                        Spacer()
                         VStack(spacing: 24) {
                             Image(systemName: "lightbulb.slash.fill")
                                 .font(.system(size: 60))
                                 .foregroundColor(.gray.opacity(0.4))
                             
                             Text("Bugün için henüz bir ipucu yok")
-                                .font(.system(size: 18, weight: .semibold, design: .rounded))
-                                .foregroundColor(Color(red: 0.3, green: 0.3, blue: 0.4))
-                                .multilineTextAlignment(.center)
+                                .font(.system(size: 20, weight: .semibold, design: .rounded))
+                                .foregroundColor(.black)
                         }
                     }
                     

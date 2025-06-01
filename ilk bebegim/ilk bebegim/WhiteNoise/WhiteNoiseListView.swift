@@ -40,20 +40,20 @@ struct WhiteNoiseListView: View {
                 VStack(spacing: 0) {
                     // Search bar ve controls
                     VStack(spacing: 16) {
-                        HStack {
-                            Image(systemName: "magnifyingglass")
-                                .foregroundColor(.gray)
-                                .font(.system(size: 16, weight: .medium))
-                            
-                            TextField("Seslerde ara...", text: $searchText)
-                                .font(.system(size: 16, weight: .medium, design: .rounded))
-                        }
-                        .padding(16)
-                        .background(
-                            RoundedRectangle(cornerRadius: 16)
-                                .fill(Color.white)
-                                .shadow(color: .black.opacity(0.05), radius: 8, y: 2)
-                        )
+//                        HStack {
+//                            Image(systemName: "magnifyingglass")
+//                                .foregroundColor(.gray)
+//                                .font(.system(size: 16, weight: .medium))
+//                            
+//                            TextField("Seslerde ara...", text: $searchText)
+//                                .font(.system(size: 16, weight: .medium, design: .rounded))
+//                        }
+//                        .padding(16)
+//                        .background(
+//                            RoundedRectangle(cornerRadius: 16)
+//                                .fill(Color.white)
+//                                .shadow(color: .black.opacity(0.05), radius: 8, y: 2)
+//                        )
                         
                         // Player controls (eğer çalıyorsa)
                         if viewModel.currentlyPlaying != nil {

@@ -59,37 +59,43 @@ struct SoundsView: View {
                             Text("Beyaz Gürültü").tag(1)
                         }
                         .pickerStyle(SegmentedPickerStyle())
-                        .background(Color.white)
+                        .frame(height: 50)
+                        .background(Color.clear)
                         .cornerRadius(12)
                         .shadow(color: .black.opacity(0.05), radius: 4, y: 2)
                         .onAppear {
-                            // Segment control renklerini özelleştir
                             UISegmentedControl.appearance().selectedSegmentTintColor = UIColor(red: 0.89, green: 0.47, blue: 0.76, alpha: 1.0)
-                            UISegmentedControl.appearance().setTitleTextAttributes([.foregroundColor: UIColor.white], for: .selected)
-                            UISegmentedControl.appearance().setTitleTextAttributes([.foregroundColor: UIColor.darkGray], for: .normal)
+                            UISegmentedControl.appearance().setTitleTextAttributes([
+                                .foregroundColor: UIColor.white,
+                                .font: UIFont.systemFont(ofSize: 16, weight: .semibold)
+                            ], for: .selected)
+                            UISegmentedControl.appearance().setTitleTextAttributes([
+                                .foregroundColor: UIColor.darkGray,
+                                .font: UIFont.systemFont(ofSize: 16, weight: .medium)
+                            ], for: .normal)
                             UISegmentedControl.appearance().backgroundColor = UIColor.white
                         }
                         
                         // Search bar
-                        HStack {
-                            Image(systemName: "magnifyingglass")
-                                .foregroundColor(.gray)
-                                .font(.system(size: 16, weight: .medium))
-                            
-                            if selectedTab == 0 {
-                                TextField("Ninnilerde ara...", text: $lullabySearchText)
-                                    .font(.system(size: 16, weight: .medium, design: .rounded))
-                            } else {
-                                TextField("Seslerde ara...", text: $whiteNoiseSearchText)
-                                    .font(.system(size: 16, weight: .medium, design: .rounded))
-                            }
-                        }
-                        .padding(16)
-                        .background(
-                            RoundedRectangle(cornerRadius: 16)
-                                .fill(Color.white)
-                                .shadow(color: .black.opacity(0.05), radius: 8, y: 2)
-                        )
+//                        HStack {
+//                            Image(systemName: "magnifyingglass")
+//                                .foregroundColor(.gray)
+//                                .font(.system(size: 16, weight: .medium))
+//
+//                            if selectedTab == 0 {
+//                                TextField("Ninnilerde ara...", text: $lullabySearchText)
+//                                    .font(.system(size: 16, weight: .medium, design: .rounded))
+//                            } else {
+//                                TextField("Seslerde ara...", text: $whiteNoiseSearchText)
+//                                    .font(.system(size: 16, weight: .medium, design: .rounded))
+//                            }
+//                        }
+//                        .padding(16)
+//                        .background(
+//                            RoundedRectangle(cornerRadius: 16)
+//                                .fill(Color.white)
+//                                .shadow(color: .black.opacity(0.05), radius: 8, y: 2)
+//                        )
                         
                         // White noise player controls (eğer çalıyorsa)
                         if selectedTab == 1 && whiteNoiseViewModel.currentlyPlaying != nil {

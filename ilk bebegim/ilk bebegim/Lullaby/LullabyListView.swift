@@ -37,25 +37,25 @@ struct LullabyListView: View {
                 
                 VStack(spacing: 0) {
                     // Search bar
-                    VStack(spacing: 16) {
-                        HStack {
-                            Image(systemName: "magnifyingglass")
-                                .foregroundColor(.gray)
-                                .font(.system(size: 16, weight: .medium))
-                            
-                            TextField("Ninnilerde ara...", text: $searchText)
-                                .font(.system(size: 16, weight: .medium, design: .rounded))
-                        }
-                        .padding(16)
-                        .background(
-                            RoundedRectangle(cornerRadius: 16)
-                                .fill(Color.white)
-                                .shadow(color: .black.opacity(0.05), radius: 8, y: 2)
-                        )
-                    }
-                    .padding(.horizontal, 20)
-                    .padding(.top, 16)
-                    
+//                    VStack(spacing: 16) {
+//                        HStack {
+//                            Image(systemName: "magnifyingglass")
+//                                .foregroundColor(.gray)
+//                                .font(.system(size: 16, weight: .medium))
+//                            
+//                            TextField("Ninnilerde ara...", text: $searchText)
+//                                .font(.system(size: 16, weight: .medium, design: .rounded))
+//                        }
+//                        .padding(16)
+//                        .background(
+//                            RoundedRectangle(cornerRadius: 16)
+//                                .fill(Color.white)
+//                                .shadow(color: .black.opacity(0.05), radius: 8, y: 2)
+//                        )
+//                    }
+//                    .padding(.horizontal, 20)
+//                    .padding(.top, 16)
+//                    
                     // Content
                     if viewModel.isLoading {
                         Spacer()
