@@ -2,115 +2,73 @@
 //  Lullaby.swift
 //  ilk bebegim
 //
-//  Created by Zeynep Toy on 14.05.2025.
+//  Created by Zeynep Toy on 20.04.2025.
 //
 
-import SwiftUI
-import AVFoundation
-import FirebaseFirestore
+import Foundation
 
-struct Lullaby: Identifiable {
+struct Lullaby: Identifiable, Codable {
     var id = UUID()
-    var title: String
-    var url: String
-    var duration: String
-}
-
-struct LullabyListView: View {
-    @State private var lullabies: [Lullaby] = []
-    @State private var player: AVPlayer?
-    @State private var nowPlaying: String?
-
-    var body: some View {
-        NavigationView {
-            List(lullabies) { lullaby in
-                VStack(alignment: .leading, spacing: 6) {
-                    Text(lullaby.title)
-                        .font(.headline)
-
-                    Text("Süre: \(lullaby.duration)")
-                        .font(.subheadline)
-                        .foregroundColor(.gray)
-
-                    if nowPlaying == lullaby.title {
-                        Text("Şu an çalıyor...")
-                            .font(.caption)
-                            .foregroundColor(.green)
-
-                        Button("Durdur") {
-                            stopPlayback()
-                        }
-                        .font(.caption)
-                        .foregroundColor(.red)
-                    }
-                }
-                .padding(.vertical, 6)
-                .onTapGesture {
-                    if nowPlaying != lullaby.title {
-                        playLullaby(urlString: lullaby.url)
-                        nowPlaying = lullaby.title
-                    }
-                }
-            }
-            .navigationTitle("Ninniler")
-        }
-        .onAppear {
-            fetchLullabies()
-        }
-    }
-
-    // MARK: - Ninni Çalma
-    func playLullaby(urlString: String) {
-        guard let url = URL(string: urlString) else {
-            print("Geçersiz URL: \(urlString)")
-            return
-        }
-
-        print("Çalınan URL: \(urlString)")
-
-        do {
-            try AVAudioSession.sharedInstance().setCategory(.playback, mode: .default)
-            try AVAudioSession.sharedInstance().setActive(true)
-        } catch {
-            print("AVAudioSession Hatası: \(error.localizedDescription)")
-        }
-
-        player = AVPlayer(url: url)
-        player?.play()
-
-        DispatchQueue.main.asyncAfter(deadline: .now() + 1.0) {
-            print("Oynatma durumu (rate): \(player?.rate ?? 0)")
-            if player?.rate == 0 {
-                print("⚠️ Ses çalmıyor olabilir.")
-            }
-        }
-    }
-
-    // MARK: - Durdurma
-    func stopPlayback() {
-        player?.pause()
-        nowPlaying = nil
-    }
-
-    // MARK: - Firestore'dan Ninnileri Çek
-    func fetchLullabies() {
-        let db = Firestore.firestore()
-        db.collection("lullabies").order(by: "order").getDocuments { snapshot, error in
-            guard let documents = snapshot?.documents else {
-                print("Firestore verisi alınamadı: \(error?.localizedDescription ?? "Bilinmeyen hata")")
-                return
-            }
-
-            self.lullabies = documents.compactMap { doc in
-                let data = doc.data()
-                return Lullaby(
-                    title: data["title"] as? String ?? "Bilinmeyen",
-                    url: data["url"] as? String ?? "",
-                    duration: data["duration"] as? String ?? ""
-                )
-            }
-
-            print("🎵 Toplam \(self.lullabies.count) ninni yüklendi.")
-        }
-    }
+    let title: String
+    let lyrics: String
+    let audioFileName: String? // Optional - bazılarında ses olmayabilir
+    let category: String? // İleride kategoriler için
+    var isFavorite: Bool = false
+    let duration: TimeInterval? // Ses dosyası süresi (saniye)
+    
+    // Örnek ninniler için static func
+    static let sampleLullabies: [Lullaby] = [
+        Lullaby(
+            title: "Dandini Dandini Dastana",
+            lyrics: """
+            Dandini dandini dastana
+            Danalar girmiş bostana
+            Kov bostancı danayı
+            Yesin patlıcan turpayı
+            
+            Dandini dandini dastana
+            Danalar girmiş bostana
+            Kov bostancı danayı
+            Yesin patlıcan turpayı
+            """,
+            audioFileName: "lullaby.mp3", // Test dosyan
+            category: "Geleneksel",
+            duration: 120.0
+        ),
+        Lullaby(
+            title: "Uyusun da Büyüsün",
+            lyrics: """
+            Uyusun da büyüsün
+            Annesinin ak sütün
+            Em oğlum em
+            
+            Büyü de gel yanıma
+            Tutun beni elimden
+            Em oğlum em
+            
+            Dandini dandini danalar
+            Girmiş bahçemde hanalar
+            Em oğlum em
+            """,
+            audioFileName: "lullaby.mp3",
+            category: "Geleneksel",
+            duration: 95.0
+        ),
+        Lullaby(
+            title: "Eee Eee Ninnisi",
+            lyrics: """
+            Eee eee oğlum eee
+            Büyü de baban eve gele
+            
+            Getire kuzu dede
+            Pişire ahu nene
+            
+            Eee eee oğlum eee
+            Büyü de baban eve gele
+            """,
+            audioFileName: nil, // Bu ninnide ses yok
+            category: "Geleneksel",
+            duration: nil
+        )
+    ]
 }
