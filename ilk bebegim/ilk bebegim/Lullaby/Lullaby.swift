@@ -8,15 +8,14 @@
 import Foundation
 
 struct Lullaby: Identifiable, Codable {
-    var id = UUID()
+    let id = UUID()
     let title: String
     let lyrics: String
-    let audioFileName: String? // Optional - bazılarında ses olmayabilir
-    let category: String? // İleride kategoriler için
+    let audioFileName: String?
+    let category: String?
     var isFavorite: Bool = false
-    let duration: TimeInterval? // Ses dosyası süresi (saniye)
+    let duration: TimeInterval?
     
-    // Örnek ninniler için static func
     static let sampleLullabies: [Lullaby] = [
         Lullaby(
             title: "Dandini Dandini Dastana",
@@ -31,7 +30,7 @@ struct Lullaby: Identifiable, Codable {
             Kov bostancı danayı
             Yesin patlıcan turpayı
             """,
-            audioFileName: "lullaby.mp3", // Test dosyan
+            audioFileName: "lullaby.mp3",
             category: "Geleneksel",
             duration: 120.0
         ),
@@ -66,7 +65,7 @@ struct Lullaby: Identifiable, Codable {
             Eee eee oğlum eee
             Büyü de baban eve gele
             """,
-            audioFileName: nil, // Bu ninnide ses yok
+            audioFileName: nil,
             category: "Geleneksel",
             duration: nil
         )

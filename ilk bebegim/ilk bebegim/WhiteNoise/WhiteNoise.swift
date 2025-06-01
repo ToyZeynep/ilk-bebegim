@@ -8,16 +8,15 @@
 import Foundation
 
 struct WhiteNoise: Identifiable, Codable {
-    var id = UUID()
+    let id = UUID()
     let title: String
     let description: String
     let audioFileName: String
-    let icon: String // SF Symbol name
-    let color: String // Hex color
+    let icon: String
+    let color: String
     var isFavorite: Bool = false
-    var isLooping: Bool = true // Beyaz gürültü genelde loop
-    
-    // Örnek beyaz gürültü sesleri
+    var isLooping: Bool = true
+
     static let sampleNoises: [WhiteNoise] = [
         WhiteNoise(
             title: "Beyaz Gürültü",

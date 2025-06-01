@@ -75,16 +75,16 @@ struct LullabyCardView: View {
             
             Spacer()
             
-            // Favorite button
-            Button(action: {
-                viewModel.toggleFavorite(for: lullaby)
-            }) {
-                Image(systemName: lullaby.isFavorite ? "heart.fill" : "heart")
-                    .font(.system(size: 20, weight: .medium))
-                    .foregroundColor(lullaby.isFavorite ? .red : .gray)
-                    .animation(.spring(response: 0.3, dampingFraction: 0.6), value: lullaby.isFavorite)
-            }
-            .buttonStyle(PlainButtonStyle())
+//            // Favorite button
+//            Button(action: {
+//                viewModel.toggleFavorite(for: lullaby)
+//            }) {
+//                Image(systemName: lullaby.isFavorite ? "heart.fill" : "heart")
+//                    .font(.system(size: 20, weight: .medium))
+//                    .foregroundColor(lullaby.isFavorite ? .red : .gray)
+//                    .animation(.spring(response: 0.3, dampingFraction: 0.6), value: lullaby.isFavorite)
+//            }
+//            .buttonStyle(PlainButtonStyle())
         }
         .padding(20)
         .background(

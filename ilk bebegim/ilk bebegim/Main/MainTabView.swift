@@ -11,7 +11,8 @@ struct MainTabView: View {
     @StateObject private var viewModel = QuestionViewModel()
     @StateObject private var lullabyViewModel = LullabyViewModel()
     @StateObject private var whiteNoiseViewModel = WhiteNoiseViewModel()
-    
+    @StateObject private var growthViewModel = GrowthViewModel()
+
     var body: some View {
         TabView {
             QuestionListView(viewModel: viewModel)
@@ -19,30 +20,30 @@ struct MainTabView: View {
                     Image(systemName: "questionmark.circle.fill")
                     Text("Sorular")
                 }
-
+            
             FavoritesView(viewModel: viewModel)
                 .tabItem {
                     Image(systemName: "heart.fill")
                     Text("Favoriler")
                 }
-
+            
             DailyTipView()
                 .tabItem {
                     Image(systemName: "lightbulb.fill")
                     Text("Günlük İpucu")
                 }
             
-            LullabyListView(viewModel: lullabyViewModel)
+            SoundsView(lullabyViewModel: lullabyViewModel, whiteNoiseViewModel: whiteNoiseViewModel)
                 .tabItem {
-                    Image(systemName: "music.note")
-                    Text("Ninniler")
+                    Image(systemName: "waveform")
+                    Text("Sesler")
                 }
             
-            WhiteNoiseListView(viewModel: whiteNoiseViewModel)
-                            .tabItem {
-                                Image(systemName: "waveform")
-                                Text("Sesler")
-                            }
+            BabyListView(viewModel: growthViewModel)
+                .tabItem {
+                    Image(systemName: "chart.line.uptrend.xyaxis")
+                    Text("Büyüme")
+                }
         }
         .accentColor(Color(red: 0.89, green: 0.47, blue: 0.76)) // Pink tema rengi
         .onAppear {
