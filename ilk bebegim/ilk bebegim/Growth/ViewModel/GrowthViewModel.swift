@@ -128,12 +128,6 @@ class GrowthViewModel: ObservableObject {
     
     func getGrowthRecords(for baby: BabyProfile) -> [GrowthRecord] {
         let filtered = growthRecords.filter { $0.babyId == baby.id }
-        print("👶 \(baby.name) için kayıtlar: \(filtered.count) adet")
-        print("👶 Baby ID: \(baby.id)")
-        print("📊 Tüm kayıtlar: \(growthRecords.count) adet")
-        for record in growthRecords {
-            print("📝 Kayıt - Baby ID: \(record.babyId), Tarih: \(record.formattedDate)")
-        }
         return filtered.sorted { $0.date < $1.date }
     }
     
@@ -153,7 +147,6 @@ class GrowthViewModel: ObservableObject {
         return getGrowthRecords(for: baby).filter { $0.headCircumference != nil }
     }
     
-    // Son 30 gündeki artış
     func recentWeightGain(for baby: BabyProfile) -> Double? {
         let recentRecords = getWeightRecords(for: baby).suffix(2)
         guard recentRecords.count >= 2 else { return nil }

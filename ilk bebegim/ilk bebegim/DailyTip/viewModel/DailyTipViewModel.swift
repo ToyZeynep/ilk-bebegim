@@ -29,7 +29,6 @@ class DailyTipViewModel: ObservableObject {
         
         // Bugün zaten tip gösterildiyse, mevcut tipi göster
         if lastTipDate == todayString, let existingTip = todaysTip {
-            print("✅ Bugün için tip zaten var: \(existingTip.title)")
             return
         }
         

@@ -95,11 +95,13 @@ struct QuestionListView: View {
                     } else {
                         ScrollView(showsIndicators: false) {
                             LazyVStack(spacing: 16) {
-                                ForEach(filteredQuestions) { question in
+                                ForEach(Array(filteredQuestions.enumerated()), id: \.offset) { index, question in
                                     NavigationLink(destination: QuestionDetailView(question: question)) {
                                         QuestionCardView(question: question, viewModel: viewModel)
                                     }
                                     .buttonStyle(PlainButtonStyle())
+                                    
+                                    QuestionListBanner(questionIndex: index)
                                 }
                             }
                             .padding(.horizontal, 20)

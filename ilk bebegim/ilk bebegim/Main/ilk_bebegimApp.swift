@@ -7,6 +7,7 @@
 
 import SwiftUI
 import Firebase
+import GoogleMobileAds
 
 @main
 struct IlkBebegimApp: App {
@@ -14,6 +15,9 @@ struct IlkBebegimApp: App {
 
     init() {
         FirebaseApp.configure()
+        MobileAds.shared.start { status in
+            print("AdMob başlatıldı. Status: \(status)")
+        }
     }
 
     var body: some Scene {

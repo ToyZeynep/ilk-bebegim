@@ -100,5 +100,8 @@ struct QuestionDetailView: View {
         }
         .navigationTitle("Detaylar")
         .navigationBarTitleDisplayMode(.inline)
+        .onAppear {
+            AdManager.shared.trackQuestionDetailView()
+        }
     }
 }

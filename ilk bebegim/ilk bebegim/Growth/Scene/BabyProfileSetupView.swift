@@ -216,6 +216,9 @@ struct BabyProfileSetupView: View {
         }
         .onAppear {
             loadExistingProfile()
+            DispatchQueue.main.asyncAfter(deadline: .now() + 2.0) {
+                AdManager.shared.trackQuestionDetailView()
+            }
         }
     }
     

@@ -183,6 +183,8 @@ struct LullabyDetailView: View {
                 .padding(.horizontal, 20)
                 .padding(.vertical, 16)
             }
+            
+            BottomBannerView()
         }
         .navigationTitle(lullaby.title)
         .navigationBarTitleDisplayMode(.inline)
