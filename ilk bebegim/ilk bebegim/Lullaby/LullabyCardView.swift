@@ -56,8 +56,8 @@ struct LullabyCardView: View {
                     .lineLimit(2)
                 
                 HStack {
-                    if let duration = lullaby.duration {
-                        Text(formatDuration(duration))
+                    if isCurrentlyPlaying && viewModel.duration > 0 {
+                        Text(formatDuration(viewModel.duration))
                             .font(.system(size: 12, weight: .medium, design: .rounded))
                             .foregroundColor(.secondary)
                     }

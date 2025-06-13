@@ -68,7 +68,7 @@ struct LullabyDetailView: View {
                             }
                             .buttonStyle(PlainButtonStyle())
                             
-                            if viewModel.currentlyPlaying?.id == lullaby.id {
+                            if viewModel.currentlyPlaying?.id == lullaby.id && viewModel.duration > 0 {
                                 VStack(spacing: 8) {
                                     ProgressView(value: progress)
                                         .progressViewStyle(LinearProgressViewStyle(tint: Color(red: 0.89, green: 0.47, blue: 0.76)))
@@ -144,31 +144,44 @@ struct LullabyDetailView: View {
                             .shadow(color: .black.opacity(0.05), radius: 8, y: 2)
                     )
                     
-                    if lullaby.duration != nil {
+                    // Sadece çalıyorsa süre bilgisini göster
+                    if isCurrentlyPlaying && viewModel.duration > 0 {
                         VStack(alignment: .leading, spacing: 12) {
                             Text("Bilgiler")
                                 .font(.system(size: 18, weight: .bold, design: .rounded))
                                 .foregroundColor(.secondary)
                             
                             VStack(alignment: .leading, spacing: 8) {
-                                if let duration = lullaby.duration {
-                                    HStack {
-                                        Image(systemName: "clock.fill")
-                                            .foregroundColor(Color(red: 0.89, green: 0.47, blue: 0.76))
-                                        Text("Süre: \(formatTime(duration))")
-                                            .font(.system(size: 14, weight: .medium, design: .rounded))
-                                            .foregroundColor(Color(red: 0.3, green: 0.3, blue: 0.4))
-                                    }
+                                HStack {
+                                    Image(systemName: "clock.fill")
+                                        .foregroundColor(Color(red: 0.89, green: 0.47, blue: 0.76))
+                                    Text("Süre: \(formatTime(viewModel.duration))")
+                                        .font(.system(size: 14, weight: .medium, design: .rounded))
+                                        .foregroundColor(Color(red: 0.3, green: 0.3, blue: 0.4))
                                 }
-                                
-                                if lullaby.audioFileName == nil {
-                                    HStack {
-                                        Image(systemName: "music.note.tv")
-                                            .foregroundColor(.orange)
-                                        Text("Sadece sözler mevcut")
-                                            .font(.system(size: 14, weight: .medium, design: .rounded))
-                                            .foregroundColor(.orange)
-                                    }
+                            }
+                        }
+                        .padding(16)
+                        .background(
+                            RoundedRectangle(cornerRadius: 12)
+                                .fill(Color.white.opacity(0.7))
+                                .shadow(color: .black.opacity(0.03), radius: 4, y: 1)
+                        )
+                    }
+                    
+                    if lullaby.audioFileName == nil {
+                        VStack(alignment: .leading, spacing: 12) {
+                            Text("Bilgiler")
+                                .font(.system(size: 18, weight: .bold, design: .rounded))
+                                .foregroundColor(.secondary)
+                            
+                            VStack(alignment: .leading, spacing: 8) {
+                                HStack {
+                                    Image(systemName: "music.note.tv")
+                                        .foregroundColor(.orange)
+                                    Text("Sadece sözler mevcut")
+                                        .font(.system(size: 14, weight: .medium, design: .rounded))
+                                        .foregroundColor(.orange)
                                 }
                             }
                         }
