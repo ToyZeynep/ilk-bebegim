@@ -7,6 +7,7 @@
 
 import Foundation
 import Firebase
+import FirebaseRemoteConfig
 
 class RemoteConfigManager: ObservableObject {
     @Published var isSoundsTabEnabled: Bool = false
