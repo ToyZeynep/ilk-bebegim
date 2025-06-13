@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		217C9C842DFCC4480006C359 /* FirebaseRemoteConfig in Frameworks */ = {isa = PBXBuildFile; productRef = 217C9C832DFCC4480006C359 /* FirebaseRemoteConfig */; };
 		2184D6F22DF0E61600EDC098 /* GoogleMobileAds in Frameworks */ = {isa = PBXBuildFile; productRef = 2184D6F12DF0E61600EDC098 /* GoogleMobileAds */; };
 		21D527712DB5750D00C55522 /* FirebaseAnalytics in Frameworks */ = {isa = PBXBuildFile; productRef = 21D527702DB5750D00C55522 /* FirebaseAnalytics */; };
 		21D527732DB5750D00C55522 /* FirebaseAuth in Frameworks */ = {isa = PBXBuildFile; productRef = 21D527722DB5750D00C55522 /* FirebaseAuth */; };
@@ -35,6 +36,7 @@
 				2184D6F22DF0E61600EDC098 /* GoogleMobileAds in Frameworks */,
 				21D527712DB5750D00C55522 /* FirebaseAnalytics in Frameworks */,
 				21D527772DB5750D00C55522 /* FirebaseCrashlytics in Frameworks */,
+				217C9C842DFCC4480006C359 /* FirebaseRemoteConfig in Frameworks */,
 				21D527752DB5750D00C55522 /* FirebaseCore in Frameworks */,
 				21D527792DB5750D00C55522 /* FirebaseFirestore in Frameworks */,
 				21D527732DB5750D00C55522 /* FirebaseAuth in Frameworks */,
@@ -86,6 +88,7 @@
 				21D527762DB5750D00C55522 /* FirebaseCrashlytics */,
 				21D527782DB5750D00C55522 /* FirebaseFirestore */,
 				2184D6F12DF0E61600EDC098 /* GoogleMobileAds */,
+				217C9C832DFCC4480006C359 /* FirebaseRemoteConfig */,
 			);
 			productName = "ilk bebegim";
 			productReference = 21D527582DB56C0000C55522 /* ilk bebegim.app */;
@@ -387,6 +390,11 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
+		217C9C832DFCC4480006C359 /* FirebaseRemoteConfig */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 21D5276F2DB5750D00C55522 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseRemoteConfig;
+		};
 		2184D6F12DF0E61600EDC098 /* GoogleMobileAds */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = 2184D6F02DF0E61600EDC098 /* XCRemoteSwiftPackageReference "swift-package-manager-google-mobile-ads" */;

@@ -8,6 +8,7 @@
 import SwiftUI
 import Firebase
 import GoogleMobileAds
+import FirebaseRemoteConfig
 
 @main
 struct IlkBebegimApp: App {
